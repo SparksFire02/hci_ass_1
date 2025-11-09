@@ -200,14 +200,47 @@ Social networks have risen in popularity in the 21st century. They have provided
 
 Multiple studies \cite{deSegovia2024, Ruiz2024, Sinha2023} have been conducted to investigate mindless scrolling on well-being, mental health and focus. One research \cite{Sinha2023} highlighted that typical results are related to a weaker quality of cognitive processing. However, there were no present study that evaluates how mindless-scrolling affects reaction time as a cognitive metric. Therefore, can mindless-scrolling induce a change in reaction time?
 
-\section{Template Overview}
-As noted in the introduction, the ``\verb|acmart|'' document class can
-be used to prepare many different kinds of documentation --- a
-double-anonymous initial submission of a full-length technical paper, a
-two-page SIGGRAPH Emerging Technologies abstract, a ``camera-ready''
-journal article, a SIGCHI Extended Abstract, and more --- all by
-selecting the appropriate {\itshape template style} and {\itshape
-  template parameters}.
+\section{Method}
+
+\subsection{Participants}
+
+Ten currently enrolled Bauhaus-Universität Weimar students, consisting of five males and five females, with ages that ranged from 22 to 36, volunteered to participate in the study. The participants were active social media users.
+
+\subsection{Experiment Conditions}
+The study consisted of two conditions: calm and mindless-scrolling. The calm condition involved the subject listening to relaxation tracks for 10 minutes followed by playing a designated game. The mindless-scrolling condition involved the subject using their smartphone to mindlessly scroll through any of their chosen social media application ten minutes followed by playing the same game as the calm condition. In order to mitigate the carry-over effect, both conditions were separated by a five minute break. The game itself will be explained in the "Dependent Measures" subsection.
+
+\subsection{Materials}
+
+The experiment used several pieces of hardware. The setup that was used by the research subject utilized a MacBook that was connected to a monitor to display the game and the consent form, a speaker for audio playback, and a mouse and keyboard for participant input. The experiment required the subjects to use their own smartphone during the mindless-scrolling conditions of the experiment session. Two researcher smartphones were used for script reading and timing management. Another laptop was also used by the researchers to document the experiment.
+
+\subsection{Dependent Measures}
+Following the completion of both the calm and mindless-scrolling condition, a color-picking game is prepared in the subject's experimental setup. The game is relatively simple, it showed two options in forms of boxes with a color of the same hue, but with a luminance gap between the two. Selecting one of the options will finish the round and instantly start another one. The game consisted of 20 consecutive rounds, in which a random color hue was chosen. To increase the task difficulty, the luminance gap between the two options was  decreased by a constant value in as the game progressed. The game is shown in figure 1.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{HCI Game.jpg}
+    \caption{Color-picking Game}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Design}
+
+The study used a within-subjects design and each subject experienced both the calm and the mindless-scrolling conditions. Two sets of sessions were prepared, with each session containing both conditions but in a different order. The sessions in set A started with the calm condition followed by the mindless-scrolling condition. The sessions with set B started with the mindless-scrolling condition followed by the calm condition. The participants were equally and randomly assigned to one of the two sets to counterbalance the order effect. To mitigate the carry-over effects between the two conditions, subjects were given five minute breaks before moving on from the first condition to the second condition. 
+
+\subsection{Procedures}
+
+Subjects were tested individually in the presence of two researchers. One researcher, designated as the "Script Reader", was tasked to introduce the tasks to the subject and let the subject performs the tasks. One researcher, designated as the "Observer", was tasked with documentation of how the experiment was conducted, such as the subject's response to instructions and their expressions throughout the whole session. The observer was also responsible to monitor and verbally signal the completion of the ten minute conditions and the five minute break. 
+\par On arrival, the subject was greeted by the script reader and was instructed to sit at a desk, where the experimental setup was prepared (The experimental setup is shown in figure 2). The subject was told that they were helping the researchers to measure their reaction time after experiencing two different conditions. The subject was then shown a consent form for them to read. The experiment begun after the subject signed the consent form.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Experiment.png}
+    \caption{Study set-up of the experiment}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
 
 \section{Results}
 Participants' reaction times varied across the two conditions. The mean reaction time of participants after mindless-scrolling indicated a slightly faster response time, with better consistency at $sd = 258.68$. The results are shown in Table~\ref{tab:rt_stats}. The descriptive statistics provides an initial overview of the effects of both conditions on cognitive performance.
@@ -271,6 +304,27 @@ We thank the participants for giving us their time to participate in this experi
 %% If your work has an appendix, this is the place to put it.
 \appendix
 
+\section{Use of Large Language Models (LLMs) for Content Development}
+This appendix documents the help received from Large Language Models :
+\subsection{LLM for Structural Refinement(Gemini)}
+\begin{itemize}
+    \item \textbf{Tool/Model:} Gemini (Developed by Google)
+    \item \textbf{Date of Interaction} 2025-11-08
+    \item  \textbf{Purpose:} To refine the structure of the paper and word usage.
+    \item \textbf{Prompt Summary:} The prompts focused on the paper's structure, specifically the method section (e.g. In both experiment conditions the subjects will play a color picking game, the condition is explained in a subsection called "Experiments Conditions" where should I explain about the game? Is this explanation repetitive?)
+    \item \textbf{Outcome Summary:} The LLM suggested me to explain the game in Materials, Apparatus, or Measures, depending on what the game was used for in the study. The LLM also suggested a few fixes that can be made.
+    \item \textbf{Explanation of Use:} I decided to go with the AI's suggestion and put it in the Dependent Measures subsection to show that it was used as a measuring tool. Some words were used too much (e.g. color in the game explanation) and were changed after the interaction concluded.
+\end{itemize}
+
+\subsection{LLM for Game Creation (GitHub Copilot)}
+\begin{itemize}
+    \item \textbf{Tool/Model:} GitHub Copilot
+    \item \textbf{Date of Interaction} 2025-11-08
+    \item  \textbf{Purpose:} To make the game as a measurement tool for the study.
+    \item \textbf{Prompt Summary:} The prompt started with the researcher asking if they should use Client-sided rendering or Server-sided rendering to ensure the fairness of the gameplay between each participant due to the concerns of connection problem caused by the free hosting service. The LLM ended up being used to make and refine the game instead.
+    \item \textbf{Outcome Summary:} After the first prompt, the LLM somehow decided to code the whole game. And after further interacting with the researcher, the LLM was used to refine the game until it satisfies the researcher.
+    \item \textbf{Explanation of Use:} I had concerns that free hosting may cause connection problem while playing the game, that is what started the first prompt, after the game was automatically coded, I decided to use it to improve the game until it satisfies the whole team.
+\end{itemize}
 \section{Research Methods}
 
 \subsection{Results of the Experiment}
