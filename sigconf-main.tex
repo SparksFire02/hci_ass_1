@@ -56,21 +56,21 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-\setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
+%\setcopyright{acmlicensed}
+%\copyrightyear{2018}
+%\acmYear{2018}
+\acmDOI{NA}
 %% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-  conference title from your rights confirmation email}{June 03--05,
-  2018}{Woodstock, NY}
+%%\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+%  conference title from your rights confirmation email}{June 03--05,
+%  2018}{Woodstock, NY}
 %%
 %%  Uncomment \acmBooktitle if the title of the proceedings is different
 %%  from ``Proceedings of ...''!
 %%
 %%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
 %%  June 03--05, 2018, Woodstock, NY}
-\acmISBN{978-1-4503-XXXX-X/2018/06}
+\acmISBN{NA-ISBN}
 
 
 %%
@@ -105,6 +105,21 @@
 %% the next command will enable that style.
 %%\citestyle{acmauthoryear}
 
+%% use of package for code snippets
+\usepackage{listings}
+
+\lstset{
+	language=R,
+	basicstyle=\ttfamily\footnotesize,
+	backgroundcolor=\color{gray!5},
+	frame=single,
+	breaklines=true,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red!60!black}
+}
 
 %%
 %% end of the preamble, start of the body of the document source.
@@ -232,15 +247,6 @@ The study used a within-subjects design and each subject experienced both the ca
 Subjects were tested individually in the presence of two researchers. One researcher, designated as the "Script Reader", was tasked to introduce the tasks to the subject and let the subject performs the tasks. One researcher, designated as the "Observer", was tasked with documentation of how the experiment was conducted, such as the subject's response to instructions and their expressions throughout the whole session. The observer was also responsible to monitor and verbally signal the completion of the ten minute conditions and the five minute break. 
 \par On arrival, the subject was greeted by the script reader and was instructed to sit at a desk, where the experimental setup was prepared (The experimental setup is shown in figure 2). The subject was told that they were helping the researchers to measure their reaction time after experiencing two different conditions. The subject was then shown a consent form for them to read. The experiment begun after the subject signed the consent form.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{Experiment.png}
-    \caption{Study set-up of the experiment}
-    \label{fig:placeholder}
-\end{figure}
-
-
-
 
 \section{Results}
 Participants' reaction times varied across the two conditions. The mean reaction time of participants after mindless-scrolling indicated a slightly faster response time, with better consistency at $sd = 258.68$. The results are shown in Table~\ref{tab:rt_stats}. The descriptive statistics provides an initial overview of the effects of both conditions on cognitive performance.
@@ -258,6 +264,14 @@ Participants' reaction times varied across the two conditions. The mean reaction
 		\bottomrule
 	\end{tabular}
 \end{table}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/descriptive-statistics.png}
+	\caption{Reaction times for calm and mindless-scrolling conditions.}
+	\label{fig:mean-i-beam}
+\end{figure}
+
 
 A paired sample t-test was performed to identify the effects of mindless-scrolling against a calm condition. The results of the t-test showed no significant difference between the mindless-scrolling and calm scenarios [$t(9) = -1.2014, p = 0.2602$]. 
 
@@ -325,13 +339,16 @@ This appendix documents the help received from Large Language Models :
     \item \textbf{Outcome Summary:} After the first prompt, the LLM somehow decided to code the whole game. And after further interacting with the researcher, the LLM was used to refine the game until it satisfies the researcher.
     \item \textbf{Explanation of Use:} I had concerns that free hosting may cause connection problem while playing the game, that is what started the first prompt, after the game was automatically coded, I decided to use it to improve the game until it satisfies the whole team.
 \end{itemize}
+
 \section{Research Methods}
 
 \subsection{Results of the Experiment}
 
+Table~\ref{tab:appendix_rt} shows data collected from the participants after each condition is done. Data was collected automatically and downloaded into a log file for processing.
+
 \begin{table}[ht]
 	\centering
-	\caption{Reaction times (ms) for each participant under Calm and Mindless Scrolling conditions.}
+	\caption{Average reaction times (ms) for each participant under Calm and Mindless Scrolling conditions.}
 	\label{tab:appendix_rt}
 	\begin{tabular}{c c c}
 		\toprule
@@ -350,6 +367,74 @@ This appendix documents the help received from Large Language Models :
 		\bottomrule
 	\end{tabular}
 \end{table}
+
+\subsection{Snippet Used for Descriptive Statistics and Analysis}
+
+Statistics were processed with R using TeXStudio.
+
+\begin{lstlisting}[caption={Snippet in R}, label={lst:r_code}]
+	calm <- c(1615.95, 841.25, 1381.1, 1583.9, 1580.45, 1314.85, 579.75, 721.3, 1278.05, 1352.05)
+	mindless <- c(1235.45, 794.55, 1081.95, 1695.4, 1259.35, 1148.5, 780.15, 770.55, 1549.55, 1015.65)
+	
+	# --- dataframe
+	df <- data.frame(
+	participant = factor(1:10),
+	condition = rep(c("Calm", "Mindless-scrolling"), each = 10),
+	rt = c(calm, mindless)
+	)
+	
+	# --- basic statistics
+	mean_calm <- mean(calm)
+	sd_calm   <- sd(calm)
+	mean_mindless <- mean(mindless)
+	sd_mindless   <- sd(mindless)
+	
+	cat("Calm: mean =", round(mean_calm, 2), "sd =", round(sd_calm, 2), "\n")
+	cat("Mindless-scrolling: mean =", round(mean_mindless, 2), "sd =", round(sd_mindless, 2), "\n")
+	
+	# --- paired t test
+	tres <- t.test(mindless, calm, paired = TRUE)
+	print(tres)
+	
+	# --- cohen's d
+	library(effsize)
+	d <- cohen.d(mindless, calm, paired = TRUE)
+	print(d)
+	
+	# --- visualisation
+	library(ggplot2)
+	library(tidyr)
+	
+	ggplot(df, aes(x = condition, y = rt)) +
+	stat_summary(
+	fun = mean, 
+	fun.min = function(x) mean(x) - sd(x), 
+	fun.max = function(x) mean(x) + sd(x),
+	geom = "errorbar", 
+	width = 0.1, 
+	size = 1
+	) +
+	stat_summary(fun = mean, geom = "point", size = 4, color = "black") +
+	labs(
+	x = "Condition",
+	y = "Reaction Time (ms)"
+	) +
+	scale_y_continuous(limits = c(0, 2000)) +
+	theme_minimal(base_size = 12)
+\end{lstlisting}
+
+\section{Observation Data}
+
+\subsection{Participant Feedback}
+Here are the compiled feedback from participants after each session was collected. Only the relevant comments have been listed below.
+
+\begin{itemize}
+	\item "The calm session was way too boring. This makes it an unpleasant study for me."
+	\item "The entire study was too long."
+	\item "It didn't feel like I was actually doom-scrolling. People staring at me made it feel unnatural."
+	\item "I usually use social media with sounds. But it was too embarrassing to play it out loud."
+	\item "When using the social media, it felt like I was on a train, but instead everyone was judging me. I felt uncomfortable".
+\end{itemize}
 
 \end{document}
 \endinput
