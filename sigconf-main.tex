@@ -1,5 +1,5 @@
 %%
-%% This is file `sample-sigconf-authordraft.tex',
+%% This is file `sigconf-main.tex',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -44,7 +44,7 @@
 %% for your publication.
 %%
 %%
-\documentclass[sigconf]{acmart}
+\documentclass[manuscript]{acmart}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -56,21 +56,19 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-%\setcopyright{acmlicensed}
-%\copyrightyear{2018}
-%\acmYear{2018}
-\acmDOI{NA}
+%\setcopyright{""}
+%\copyrightyear{""}
+%\acmYear{""}
+%\acmDOI{""}
 %% These commands are for a PROCEEDINGS abstract or paper.
-%%\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-%  conference title from your rights confirmation email}{June 03--05,
-%  2018}{Woodstock, NY}
+%%\acmConference[]{}
 %%
 %%  Uncomment \acmBooktitle if the title of the proceedings is different
 %%  from ``Proceedings of ...''!
 %%
 %%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
 %%  June 03--05, 2018, Woodstock, NY}
-\acmISBN{NA-ISBN}
+%%\acmISBN{}
 
 
 %%
@@ -107,6 +105,9 @@
 
 %% use of package for code snippets
 \usepackage{listings}
+
+%% use of package for figures
+\usepackage{subcaption}
 
 \lstset{
 	language=R,
@@ -334,7 +335,7 @@ This study identified a non-significant result between mindless-scrolling and a 
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-We thank the participants for giving us their time to participate in this experiment. Special recognition goes to Professor Eva and Margarita Osipova for their guidance on this research study. Pramod Bhadana helped with the ideation of this topic.
+We thank the participants for giving us their time to participate in this experiment. Special recognition goes to Professor Eva and Margarita Osipova for their guidance on this research study. Pramod Bhadana helped with the ideation of this topic. Wang Ruiyu guided with the formatting of this report.
 \end{acks}
 
 %%
@@ -400,7 +401,7 @@ Table~\ref{tab:appendix_rt} shows data collected from the participants after eac
 
 \subsection{Snippet Used for Descriptive Statistics and Analysis}
 
-Statistics were processed with R using TeXStudio.
+Statistics were processed with R using TeXStudio. Snippet file can be found at https://nextcloud.uni-weimar.de/s/TRC3MkdLXTFxtWB (pw: ATgqgg4sgQ).
 
 \begin{lstlisting}[caption={Snippet in R}, label={lst:r_code}]
 	calm <- c(1615.95, 841.25, 1381.1, 1583.9, 1580.45, 1314.85, 579.75, 721.3, 1278.05, 1352.05)
@@ -465,6 +466,37 @@ Here are the compiled feedback from participants after each session was collecte
 	\item "I usually use social media with sounds. But it was too embarrassing to play it out loud."
 	\item "When using the social media, it felt like I was on a train, but instead everyone was judging me. I felt uncomfortable".
 \end{itemize}
+
+\subsection{Participant Interaction}
+
+Participants' interaction (who have given consent) are shown below.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p1.jpeg}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p2.jpeg}
+	\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p3.jpeg}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p4.jpeg}
+	\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p5.jpeg}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=1\linewidth]{figures/p6.jpeg}
+	\end{subfigure}
+ \caption{Participants during the interaction.}
+	\label{fig:combined-participants}
+\end{figure}
+
+
 
 \end{document}
 \endinput
